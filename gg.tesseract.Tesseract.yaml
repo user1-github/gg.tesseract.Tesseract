@@ -1,6 +1,6 @@
 app-id: gg.tesseract.Tesseract
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: tesseract
 finish-args:
@@ -28,6 +28,7 @@ modules:
       - install -Dm644 ../media/interface/cube.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
       - install -Dm644 ../gg.tesseract.Tesseract.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
       - install -Dm644 ../gg.tesseract.Tesseract.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
+      - rm -rf ${FLATPAK_DEST}/lib/tesseract/bin_unix/native_server ${FLATPAK_DEST}/lib/tesseract/bin_unix/readme.txt
     sources:
       - type: svn
         url: svn://svn.tuxfamily.org/svnroot/tesseract/main
