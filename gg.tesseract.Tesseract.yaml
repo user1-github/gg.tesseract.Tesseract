@@ -1,4 +1,4 @@
-app-id: gg.tesseract.Tesseract
+id: gg.tesseract.Tesseract
 runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
