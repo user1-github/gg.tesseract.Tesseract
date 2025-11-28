@@ -1,7 +1,7 @@
 From d0c09dc4ca0376e415cf6a4cfcd3e26a136a9ba6 Mon Sep 17 00:00:00 2001
 From: user1-github <56021366+user1-github@users.noreply.github.com>
 Date: Wed, 3 Sep 2025 20:59:02 +0300
-Subject: [PATCH] Patch makefile to make Tesseract find SDL2_image in /app/lib
+Subject: [PATCH] Patch makefile to make Tesseract detect libraries in /app/lib
 
 ---
  src/Makefile | 2 +-
