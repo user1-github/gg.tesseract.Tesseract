@@ -12,16 +12,11 @@ finish-args:
   - --device=dri
   - --persist=.tesseract
 modules:
-
   - shared-modules/SDL2/SDL2_image.json
 
   - name: tesseract
     no-autogen: true
     build-options:
-      cflags: -O3 -fomit-frame-pointer
-      cflags-override: true
-      cxxflags: -O3 -fomit-frame-pointer -ffast-math
-      cxxflags-override: true
       env:
         C_INCLUDE_PATH: /app/include/SDL2
         CPLUS_INCLUDE_PATH: /app/include/SDL2
@@ -45,4 +40,4 @@ modules:
       - type: file
         path: gg.tesseract.Tesseract.metainfo.xml
       - type: patch
-        path: make-tesseract-find-sdl2_image.patch
+        path: library-detection-fix.patch
