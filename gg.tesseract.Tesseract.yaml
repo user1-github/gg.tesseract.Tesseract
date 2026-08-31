@@ -1,6 +1,6 @@
 id: gg.tesseract.Tesseract
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 command: tesseract
 finish-args:
@@ -12,19 +12,11 @@ finish-args:
   - --device=dri
   - --persist=.tesseract
 modules:
-
   - shared-modules/SDL2/SDL2_image.json
+  - shared-modules/SDL2/SDL2_mixer.json
 
   - name: tesseract
     no-autogen: true
-    build-options:
-      cflags: -O3 -fomit-frame-pointer
-      cflags-override: true
-      cxxflags: -O3 -fomit-frame-pointer -ffast-math
-      cxxflags-override: true
-      env:
-        C_INCLUDE_PATH: /app/include/SDL2
-        CPLUS_INCLUDE_PATH: /app/include/SDL2
     subdir: src
     post-install:
       - mkdir -p ${FLATPAK_DEST}/share/tesseract
@@ -45,4 +37,6 @@ modules:
       - type: file
         path: gg.tesseract.Tesseract.metainfo.xml
       - type: patch
-        path: make-tesseract-find-sdl2_image.patch
+        path: patches/gcc16.patch
+      - type: patch
+        path: patches/makefile-modernisation.patch
