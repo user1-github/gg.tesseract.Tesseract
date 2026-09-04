@@ -20,18 +20,22 @@ modules:
     subdir: src
     post-install:
       - mkdir -p ${FLATPAK_DEST}/share/tesseract
-      - cp -a ../media/ ../config/ ../bin_unix/ ${FLATPAK_DEST}/share/tesseract
-      - install -Dm755 ../tesseract_unix ${FLATPAK_DEST}/bin/tesseract
+      - cp -a ../media/ ../config/ ${FLATPAK_DEST}/share/tesseract
+      - install -Dm755 ../bin_unix/native_client -t ${FLATPAK_DEST}/bin
+      - install -Dm755 ../bin_unix/native_server -t ${FLATPAK_DEST}/bin
+      - install -Dm755 ../tesseract.sh ${FLATPAK_DEST}/bin/tesseract
+      - install -Dm755 ../tesseract-server.sh ${FLATPAK_DEST}/bin/tesseract-server
       - install -Dm644 ../media/interface/cube.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
-      - install -Dm644 ../gg.tesseract.Tesseract.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
-      - install -Dm644 ../gg.tesseract.Tesseract.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
+      - install -Dm644 ../gg.tesseract.Tesseract.desktop -t ${FLATPAK_DEST}/share/applications
+      - install -Dm644 ../gg.tesseract.Tesseract.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo
     sources:
       - type: svn
         url: svn://svn.tuxfamily.org/svnroot/tesseract/main
         revision: '2553'
-      - type: shell
-        commands:
-          - sed -i 's#TESS_DATA=.#TESS_DATA=/app/share/tesseract/#g' tesseract_unix
+      - type: file
+        path: tesseract.sh
+      - type: file
+        path: tesseract-server.sh
       - type: file
         path: gg.tesseract.Tesseract.desktop
       - type: file
