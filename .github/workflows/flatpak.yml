@@ -1,0 +1,21 @@
+on:
+  push:
+    branches: [cmake-test]
+  pull_request:
+name: CI
+jobs:
+  flatpak:
+    name: "Flatpak"
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:freedesktop-25.08
+      options: --privileged
+    steps:
+    - uses: actions/checkout@v7
+      with:
+        submodules: true
+    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+      with:
+        bundle: tesseract.flatpak
+        manifest-path: gg.tesseract.Tesseract.yaml
+        cache-key: flatpak-builder-${{ github.sha }}
