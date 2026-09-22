@@ -1,9 +1,8 @@
 [Desktop Entry]
-Version=1.0
-Name=Tesseract
-GenericName=Fast-paced Shooter
-Exec=tesseract
-Icon=gg.tesseract.Tesseract
-Terminal=false
 Type=Application
-Categories=Game;Shooter;
+Name=Tesseract
+Comment=Cube 2 based game engine with upgraded modern renderer
+Icon=gg.tesseract.Tesseract
+Exec=tesseract
+Categories=Game;ActionGame;Shooter;
+Keywords=fps;action;multiplayer;play;arena;mapeditor;
