@@ -1,6 +1,6 @@
 #!/bin/sh
 TESS_DATA=/app/share/tesseract
-TESS_BIN=/app/bin/native_client
+TESS_BIN=/app/bin/tesseract_linux
 TESS_OPTIONS="-u${HOME}/.tesseract"
 
 cd ${TESS_DATA}
